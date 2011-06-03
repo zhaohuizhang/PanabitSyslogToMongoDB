@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author jianwen
- * modified by Zhao Yusu
+ *
  */
 public class IpMatcherLst implements IpMatcher {
 
