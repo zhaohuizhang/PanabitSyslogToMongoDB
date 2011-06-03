@@ -22,6 +22,8 @@ public class IpMatcherLst implements IpMatcher {
 		if (ipv4NetAddrList == null) {
 			ipv4NetAddrList = new ArrayList<Ipv4NetAddr>(null);
 			// TODO: Read IpMatchConf.NETFILE and initialize the List
+			// Step 1: Read file net.txt to ipv4NetAddrList
+			// Step 2: Sort according to masklen from big to small
 		}
 	}
 	
@@ -33,7 +35,11 @@ public class IpMatcherLst implements IpMatcher {
 	public Ipv4NetAddr ipMatch(int ipv4Addr) {
 		Ipv4NetAddr netAddr = new Ipv4NetAddr();
 		// TODO
-		return netAddr;
+		// LOOP
+		// if((ipv4Addr && masklen_1111) == Ipv4NetAddr.netaddr)
+		// 		return new Ipv4NetAddr(Ipv4Addr.netAddr, Ipv4Addr.masklen, Ipv4Addr.group);
+		// LOOP END
+		return null;
 	}
 
 	/* (non-Javadoc)

@@ -9,7 +9,10 @@ package cn.edu.sjtu.front.panabitsyslog;
  */
 public class PanabitMsgParser {
 
-	public static PanabitMsg parseMsg(String msg){
+	public PanabitMsg parseMsg(String msg){
+		
+		// 判断消息类型，调用响应的Parser
+		
 		return null;
 	}
 	
