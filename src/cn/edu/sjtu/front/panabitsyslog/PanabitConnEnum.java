@@ -8,7 +8,7 @@ package cn.edu.sjtu.front.panabitsyslog;
  *
  */
 public enum PanabitConnEnum {
-
+//TODO delete
 	TCP,
 	UDP;
 	
