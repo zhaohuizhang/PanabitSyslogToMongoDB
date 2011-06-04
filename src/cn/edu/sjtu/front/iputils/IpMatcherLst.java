@@ -33,7 +33,7 @@ public class IpMatcherLst implements IpMatcher {
 	 */
 	@Override
 	public Ipv4NetAddr ipMatch(int ipv4Addr) {
-		Ipv4NetAddr netAddr = new Ipv4NetAddr();
+//		Ipv4NetAddr netAddr = new Ipv4NetAddr();
 		// TODO
 		// LOOP
 		// if((ipv4Addr && masklen_1111) == Ipv4NetAddr.netaddr)
