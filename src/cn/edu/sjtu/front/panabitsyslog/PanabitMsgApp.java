@@ -25,7 +25,7 @@ public class PanabitMsgApp extends PanabitMsg {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		String s="Application:"+PanabitMsgApp.getAppType()+"  "+"Protocol"+PanabitMsgApp.getConnType()+"  "+"StartTime"+PanabitMsgApp.getStartTime()+"  "+"EndTime"+PanabitMsgApp.getEndTime()+"  "+"Srcip"+PanabitMsgApp.getSrcIpv4()+"  "+"Srcport"+PanabitMsgApp.getSrcPort()+"  "+"Desip"+PanabitMsgApp.getDstIpv4()+"  "+"Desport"+PanabitMsgApp.getDstPort()+"  "+"Inbyte"+PanabitMsgApp.getInByte()+"  "+"Outbyte"+PanabitMsgApp.getOutByte();
+		String s="Application:"+PanabitMsgApp.getAppType()+"  "+"Protocol:"+PanabitMsgApp.getConnType()+"  "+"StartTime:"+PanabitMsgApp.getStartTime()+"  "+"EndTime:"+PanabitMsgApp.getEndTime()+"  "+"Srcip:"+PanabitMsgApp.getSrcIpv4()+"  "+"Srcport:"+PanabitMsgApp.getSrcPort()+"  "+"Desip:"+PanabitMsgApp.getDstIpv4()+"  "+"Desport:"+PanabitMsgApp.getDstPort()+"  "+"Inbyte:"+PanabitMsgApp.getInByte()+"  "+"Outbyte:"+PanabitMsgApp.getOutByte();
 		return s;
 	}
 

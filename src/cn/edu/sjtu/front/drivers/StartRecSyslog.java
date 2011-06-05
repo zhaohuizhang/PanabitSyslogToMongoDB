@@ -29,14 +29,14 @@ public class StartRecSyslog {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		
-		File test=new File("syslog.txt");
-		if(test.exists()){
-		    System.out.print("this file does not exist");
-		   }else{
-		    System.out.print("this file  exist");
-		    test.createNewFile();//create new file
-		   }
+        //create new file to store the udp packet		
+//		File test=new File("syslog.txt");
+//		if(test.exists()){
+//		    System.out.print("this file does not exist");
+//		   }else{
+//		    System.out.print("this file  exist");
+//		    test.createNewFile();//create new file
+//		   }
 		
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
@@ -47,23 +47,27 @@ public class StartRecSyslog {
 			byte buf[]=new byte[100];
 			DatagramPacket receivePacket=new DatagramPacket(buf,buf.length);
 			System.out.println("startinig to receive packet");
-			BufferedWriter output = new BufferedWriter(new FileWriter(test));
+//			BufferedWriter output = new BufferedWriter(new FileWriter(test));
 			while(true){
 				receiveScoket.receive(receivePacket);
 				//check out the udppacket
 				char s[]=new String(receivePacket.getData()).toCharArray();
+				System.out.println(s);
 				int udpSize=receivePacket.getLength();
 				String strUDP=new String(s, 0, udpSize);
 				//write into txtfloder
-			    output.write(strUDP+"\r\n");
+//			    output.write(strUDP+"\r\n");
+				System.out.println(strUDP+"\r\n");
 			    //udp parse
 			    PanabitMsgParser PMP=new  PanabitMsgParser();
 			    PMP.parseMsg(strUDP);
+			    //TODO delete
 //			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
 //			    ip.parse(strUDP);
 			    //the solution of parse write into txtfloder
 			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
-			    output.write(panbitmsgapp.toString()+"\r\n");
+//			    output.write(panbitmsgapp.toString()+"\r\n");
+			    System.out.println(panbitmsgapp.toString()+"\r\n");
 			}
 				
 		} catch (SocketException e) {
