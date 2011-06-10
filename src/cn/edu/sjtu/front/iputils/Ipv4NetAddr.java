@@ -9,9 +9,9 @@ package cn.edu.sjtu.front.iputils;
  */
 public class Ipv4NetAddr {
 
-	int	netAddr;
-	int	maskLen;
-	int	netGroup;
+	long netAddr;
+	long maskLen;
+	long netGroup;
 	
 	public Ipv4NetAddr() {
 		netAddr = 0x00000000;
@@ -19,6 +19,11 @@ public class Ipv4NetAddr {
 		netGroup = 0;
 	}
 	
+	public Ipv4NetAddr(long NA, long ML, long NG) {
+		netAddr = NA;
+		maskLen = ML;
+		netGroup = NG;
+	}
 	public Ipv4NetAddr(Ipv4NetAddr _v4netAddr) {
 		this();
 		netAddr = _v4netAddr.netAddr;
