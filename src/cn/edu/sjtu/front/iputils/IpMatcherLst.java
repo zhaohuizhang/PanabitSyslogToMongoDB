@@ -27,26 +27,26 @@ public class IpMatcherLst implements IpMatcher {
 		if (ipv4NetAddrList == null) {
 			ipv4NetAddrList = new ArrayList<Ipv4NetAddr>(200);
 
-			File fn = new File("D:/Users/zys/PanabitSyslogJava/net.txt");
+			File fn = new File("../net.txt"); 
 			BufferedReader in = new BufferedReader(new FileReader(fn));
 			String s;
-			String[] ss;
+			String[] _ss;
 			int i=0;
 			
 			s=in.readLine();
-			ss=s.split(" ");
+			_ss=s.split(" ");
 			Ipv4NetAddr temp = new Ipv4NetAddr();
-			temp.netAddr=Long.parseLong(ss[0].substring(2),16);
-			temp.maskLen=Long.parseLong(ss[1]);
-			temp.netGroup=Long.parseLong(ss[2]);
+			temp.netAddr = Long.parseLong(_ss[0].substring(2), 16);
+			temp.maskLen=Long.parseLong(_ss[1]);
+			temp.netGroup=Long.parseLong(_ss[2]);
 			ipv4NetAddrList.add(temp);
        
 			while((s=in.readLine())!=null){
-				ss=s.split(" ");
+				_ss=s.split(" ");
 				temp=new Ipv4NetAddr();
-				temp.netAddr=Long.parseLong(ss[0].substring(2),16);
-				temp.maskLen=Long.parseLong(ss[1]);
-				temp.netGroup=Long.parseLong(ss[2]);
+				temp.netAddr=Long.parseLong(_ss[0].substring(2),16);
+				temp.maskLen=Long.parseLong(_ss[1]);
+				temp.netGroup=Long.parseLong(_ss[2]);
 
 				for(i=0;i<ipv4NetAddrList.size();i++){
 					if (temp.maskLen >= ipv4NetAddrList.get(i).maskLen){

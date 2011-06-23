@@ -17,7 +17,7 @@ public class IpConvert {
 
 	}
 
-	public static int dot2int(String strIp) {
+	public static int dottoInt(String strIp) {
 		return 0;
 	}
 	

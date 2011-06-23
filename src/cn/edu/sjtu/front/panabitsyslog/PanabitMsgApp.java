@@ -20,7 +20,9 @@ public class PanabitMsgApp extends PanabitMsg {
 	public static int	outByte;	// Traffic from src to dst, in bytes
 	public static int	inByte;		// Traffic from dst to src, in bytes
 	
-	
+	public PanabitMsgApp() {
+		msgType = PanabitMsgEnum.MSGAPP;
+	}
 
 	public String toString() {
 		// TODO Auto-generated method stub

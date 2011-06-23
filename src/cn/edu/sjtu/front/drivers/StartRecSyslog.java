@@ -58,11 +58,12 @@ public class StartRecSyslog {
 				String strUDP = new String(rawMsg, 0, udpSize);
 				// TODO: Remove the console output
 				// System.out.println(strUDP+"\r\n");
-			    panabitParser.parseMsg(strUDP);
+			    // panabitParser.parseMsg(strUDP);
 			    
 			    // TODO: DELETE the DEMO following code (by Jianwen)
 			    // msgPanabit = panabitParser.parseMsg(strUDP);
 			    // System.out.println(msgPanabit);
+			    // Database.MongoDB.Write(msgPanabit);
 			    
 			    //TODO delete
 //			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 

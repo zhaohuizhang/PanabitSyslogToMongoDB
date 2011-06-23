@@ -23,8 +23,9 @@ public class PanabitMsgParser {
 		String b=msg.substring(6,msg.indexOf("."));
 		String a="qqlogin,qqlogoff,msnlogin,dnsquery,pop3login,www,usrauth,ipnode,natip";
 		if(a.indexOf(b)==-1){
-			PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
-	        ip.parse(msg);
+			// PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
+	        // ip.parse(msg);
+			return parserApp.parse(msg);
 		}else{
 			// IF(msg_is_a_app_msg)
 			
