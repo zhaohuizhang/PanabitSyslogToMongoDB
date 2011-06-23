@@ -19,11 +19,6 @@ public class Ipv4NetAddr {
 		netGroup = 0;
 	}
 	
-	public Ipv4NetAddr(long NA, long ML, long NG) {
-		netAddr = NA;
-		maskLen = ML;
-		netGroup = NG;
-	}
 	public Ipv4NetAddr(Ipv4NetAddr _v4netAddr) {
 		this();
 		netAddr = _v4netAddr.netAddr;

@@ -27,34 +27,33 @@ public class IpMatcherLst implements IpMatcher {
 		if (ipv4NetAddrList == null) {
 			ipv4NetAddrList = new ArrayList<Ipv4NetAddr>(200);
 
-			File fn = new File("../net.txt"); 
-			BufferedReader in = new BufferedReader(new FileReader(fn));
-			String s;
-			String[] _ss;
-			int i=0;
+			File filename = new File("../net.txt"); 
+			BufferedReader in = new BufferedReader(new FileReader(filename));
+			String readIn;
+			String[] subReadIn;
 			
-			s=in.readLine();
-			_ss=s.split(" ");
-			Ipv4NetAddr temp = new Ipv4NetAddr();
-			temp.netAddr = Long.parseLong(_ss[0].substring(2), 16);
-			temp.maskLen=Long.parseLong(_ss[1]);
-			temp.netGroup=Long.parseLong(_ss[2]);
-			ipv4NetAddrList.add(temp);
+			readIn = in.readLine();
+			subReadIn = readIn.split(" ");
+			Ipv4NetAddr tempToAdd = new Ipv4NetAddr();
+			tempToAdd.netAddr = Long.parseLong(subReadIn[0].substring(2), 16);
+			tempToAdd.maskLen = Long.parseLong(subReadIn[1]);
+			tempToAdd.netGroup = Long.parseLong(subReadIn[2]);
+			ipv4NetAddrList.add(tempToAdd);
        
-			while((s=in.readLine())!=null){
-				_ss=s.split(" ");
-				temp=new Ipv4NetAddr();
-				temp.netAddr=Long.parseLong(_ss[0].substring(2),16);
-				temp.maskLen=Long.parseLong(_ss[1]);
-				temp.netGroup=Long.parseLong(_ss[2]);
+			while((readIn = in.readLine()) != null){
+				subReadIn = readIn.split(" ");
+				tempToAdd = new Ipv4NetAddr();
+				tempToAdd.netAddr = Long.parseLong(subReadIn[0].substring(2),16);
+				tempToAdd.maskLen = Long.parseLong(subReadIn[1]);
+				tempToAdd.netGroup = Long.parseLong(subReadIn[2]);
 
-				for(i=0;i<ipv4NetAddrList.size();i++){
-					if (temp.maskLen >= ipv4NetAddrList.get(i).maskLen){
-						ipv4NetAddrList.add(i,temp);
+				for(int i=0; i < ipv4NetAddrList.size(); i++){
+					if (tempToAdd.maskLen >= ipv4NetAddrList.get(i).maskLen){
+						ipv4NetAddrList.add(i, tempToAdd);
 						break;
 					}
-					else if (i==(ipv4NetAddrList.size()-1))
-						ipv4NetAddrList.add(temp);
+					else if (i == (ipv4NetAddrList.size()-1))
+						ipv4NetAddrList.add(tempToAdd);
 				}
 			}
 		}
@@ -65,15 +64,13 @@ public class IpMatcherLst implements IpMatcher {
 	 */
 
 	public Ipv4NetAddr ipMatch(long ipv4Addr) {
-		Ipv4NetAddr tp = null; 
 		Ipv4NetAddr result = null; 
-		int i=0;
-		for (i=0;i<ipv4NetAddrList.size();i++){
-			tp = ipv4NetAddrList.get(i);
+
+		for (Ipv4NetAddr tempInList : ipv4NetAddrList){
 //			System.out.println(Long.toHexString(tp.netAddr).toUpperCase()+" "+tp.maskLen+" "+tp.netGroup);
-			long MaskLen=(-1)<<((long)32-tp.maskLen);
-			if ((ipv4Addr & MaskLen) == tp.netAddr){
-				result=new Ipv4NetAddr(tp);
+			long maskLen = (-1) << ((long)32-tempInList.maskLen);
+			if ((ipv4Addr & maskLen) == tempInList.netAddr){
+				result = new Ipv4NetAddr(tempInList);
 				break;
 			}
 		}
