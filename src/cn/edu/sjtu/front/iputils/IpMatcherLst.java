@@ -27,7 +27,7 @@ public class IpMatcherLst implements IpMatcher {
 		if (ipv4NetAddrList == null) {
 			ipv4NetAddrList = new ArrayList<Ipv4NetAddr>(200);
 
-			File filename = new File("../net.txt"); 
+			File filename = new File("./net.txt"); 
 			BufferedReader in = new BufferedReader(new FileReader(filename));
 			String readIn;
 			String[] subReadIn;
