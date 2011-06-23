@@ -39,35 +39,41 @@ public class StartRecSyslog {
 //		   }
 		
 		String strMsg = null;
-		PanabitMsg msgPanabit = null;
-		PanabitMsgParser parser = new PanabitMsgParser();
-		// TODO: Open UDP Socket
+		PanabitMsg msgPanabit;
+		PanabitMsgParser panabitParser = new PanabitMsgParser();
+
 		try {
-			DatagramSocket receiveScoket=new DatagramSocket(30514);
-			byte buf[]=new byte[100];
-			DatagramPacket receivePacket=new DatagramPacket(buf,buf.length);
-			System.out.println("startinig to receive packet");
-//			BufferedWriter output = new BufferedWriter(new FileWriter(test));
+			DatagramSocket receiveScoket = new DatagramSocket(30514);
+			byte buf[] = new byte[1024];
+			DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+			System.out.println("Start to Receive Syslog Packet.");
+			// TOOD: Remove the file writing statements
+			// BufferedWriter output = new BufferedWriter(new FileWriter(test));
 			while(true){
 				receiveScoket.receive(receivePacket);
-				//check out the udppacket
-				char s[]=new String(receivePacket.getData()).toCharArray();
-				System.out.println(s);
-				int udpSize=receivePacket.getLength();
-				String strUDP=new String(s, 0, udpSize);
-				//write into txtfloder
-//			    output.write(strUDP+"\r\n");
-				System.out.println(strUDP+"\r\n");
-			    //udp parse
-			    PanabitMsgParser PMP=new  PanabitMsgParser();
-			    PMP.parseMsg(strUDP);
+				char rawMsg[] = new String(receivePacket.getData()).toCharArray();
+				// TOOD: Remove the console output the RAW UDP Message (for Debug Only)
+				// System.out.println(rawMsg);
+				int udpSize = receivePacket.getLength();
+				String strUDP = new String(rawMsg, 0, udpSize);
+				// TODO: Remove the console output
+				// System.out.println(strUDP+"\r\n");
+			    panabitParser.parseMsg(strUDP);
 			    //TODO delete
 //			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
 //			    ip.parse(strUDP);
 			    //the solution of parse write into txtfloder
+
+			    // TODO: Change to a 'type-independent' style 
 			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
 //			    output.write(panbitmsgapp.toString()+"\r\n");
-			    System.out.println(panbitmsgapp.toString()+"\r\n");
+			    
+			    // TODO: NOT to call toString Explicitly
+			    System.out.println(panbitmsgapp.toString() + "\r\n");
+			    
+			    // TODO: Parse the PanabitMsg Object into MongoDB 'String'
+			    // TODO: Write into MongoDB
+			    
 			}
 				
 		} catch (SocketException e) {

@@ -12,7 +12,7 @@ import java.io.*;
  * @author jianwen
  *
  */
-public class IpMatcherLst  {
+public class IpMatcherLst implements IpMatcher {
 
 	public static ArrayList<Ipv4NetAddr> ipv4NetAddrList = null;
 	

@@ -3,14 +3,21 @@
  */
 package cn.edu.sjtu.front.panabitsyslog;
 
+import cn.edu.sjtu.front.iputils.IpMatcher;
+import cn.edu.sjtu.front.iputils.IpMatcherLst;
+import cn.edu.sjtu.front.iputils.Ipv4NetAddr;
+
 /**
  * @author jianwen,zhangzhaohui
  *
  */
 public class PanabitMsgParserApp implements PanabitMsgParserInf {
 
+	public IpMatcher ipMatcher;
+	
 	@Override
 	public PanabitMsg parse(String msg) {
+		PanabitMsg panabitMsg = new PanabitMsgApp();
 		// TODO Auto-generated method stub
 		//the udp parse,  operation of string
 		String ss[]=msg.split(" ");
@@ -33,9 +40,9 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		PanabitMsgApp.setInByte(Integer.parseInt(ss[3]));
 		PanabitMsgApp.setOutByte(Integer.parseInt(ss[4]));
 		
-		
-		return null;
+		return panabitMsg;
 	}
+	
 	//ip convert to long 
     public long iptolong(String t){
     	String[] ips = t.split("[.]");  
@@ -43,5 +50,8 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
     	return num;
     }
 
+    public PanabitMsgParserApp() {
+    	ipMatcher = new IpMatcherLst();
+    }
 
 }
