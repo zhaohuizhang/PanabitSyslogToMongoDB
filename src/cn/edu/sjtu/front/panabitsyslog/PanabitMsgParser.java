@@ -17,7 +17,7 @@ public class PanabitMsgParser {
 	public static PanabitMsgParserApp parserApp;
 	// TODO: Other parsers, like PanabitMsgParserDNS, ...
 	
-	public void parseMsg(String msg){
+	public PanabitMsg parseMsg(String msg){
 
 		// judge the type and select Parser
 		String b=msg.substring(6,msg.indexOf("."));
@@ -30,7 +30,7 @@ public class PanabitMsgParser {
 			
 		}
 		
-		
+		return null;
 		// Call the parser.parse
 		
 		

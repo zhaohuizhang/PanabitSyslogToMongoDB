@@ -16,7 +16,7 @@ import cn.edu.sjtu.front.panabitsyslog.PanabitMsgParserApp;
 
 // Phase 0: Receive UDP, write to a file
 // Phase 1: Parese Msg
-// Phase 2: Write msgPanabit to DB
+// Phase 2: Print OR Write msgPanabit to DB
 
 /**
  * @author jianwen,zhangzhaohui
@@ -39,7 +39,7 @@ public class StartRecSyslog {
 //		   }
 		
 		String strMsg = null;
-		PanabitMsg msgPanabit;
+		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
 
 		try {
@@ -59,6 +59,11 @@ public class StartRecSyslog {
 				// TODO: Remove the console output
 				// System.out.println(strUDP+"\r\n");
 			    panabitParser.parseMsg(strUDP);
+			    
+			    // TODO: DELETE the DEMO following code (by Jianwen)
+			    // msgPanabit = panabitParser.parseMsg(strUDP);
+			    // System.out.println(msgPanabit);
+			    
 			    //TODO delete
 //			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
 //			    ip.parse(strUDP);
