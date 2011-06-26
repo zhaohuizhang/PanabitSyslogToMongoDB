@@ -33,17 +33,17 @@ public class IpMatcherLst implements IpMatcher {
 			readIn = in.readLine();
 			subReadIn = readIn.split(" ");
 			Ipv4NetAddr tempToAdd = new Ipv4NetAddr();
-			tempToAdd.netAddr = Long.parseLong(subReadIn[0].substring(2), 16);
-			tempToAdd.maskLen = Long.parseLong(subReadIn[1]);
-			tempToAdd.netGroup = Long.parseLong(subReadIn[2]);
+			tempToAdd.netAddr = Integer.parseInt(subReadIn[0].substring(2), 16);
+			tempToAdd.maskLen = Integer.parseInt(subReadIn[1]);
+			tempToAdd.netGroup = Integer.parseInt(subReadIn[2]);
 			ipv4NetAddrList.add(tempToAdd);
        
 			while((readIn = in.readLine()) != null){
 				subReadIn = readIn.split(" ");
 				tempToAdd = new Ipv4NetAddr();
-				tempToAdd.netAddr = Long.parseLong(subReadIn[0].substring(2),16);
-				tempToAdd.maskLen = Long.parseLong(subReadIn[1]);
-				tempToAdd.netGroup = Long.parseLong(subReadIn[2]);
+				tempToAdd.netAddr = (int) Long.parseLong(subReadIn[0].substring(2),16) & 0xFFFFFFFF;
+				tempToAdd.maskLen = Integer.parseInt(subReadIn[1]);
+				tempToAdd.netGroup = Integer.parseInt(subReadIn[2]);
 
 				for(int i=0; i < ipv4NetAddrList.size(); i++){
 					if (tempToAdd.maskLen >= ipv4NetAddrList.get(i).maskLen){

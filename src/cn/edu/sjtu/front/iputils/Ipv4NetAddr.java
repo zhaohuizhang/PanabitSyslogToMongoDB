@@ -9,9 +9,9 @@ package cn.edu.sjtu.front.iputils;
  */
 public class Ipv4NetAddr {
 
-	public long netAddr;
-	public long maskLen;
-	public long netGroup;
+	public int netAddr;
+	public int maskLen;
+	public int netGroup;
 	
 	public Ipv4NetAddr() {
 		netAddr = 0x00000000;

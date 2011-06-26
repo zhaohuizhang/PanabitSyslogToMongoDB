@@ -11,13 +11,13 @@ public class PanabitMsgApp extends PanabitMsg {
 
 	public  String appType;
 	public  String connType;
-	public  long srcGroup;
-	public  long dstGroup;
+	public  int srcGroup;
+	public  int dstGroup;
 	public  long startTime;
 	public  long endTime;
-	public  long	srcIpv4;
+	public  int	srcIpv4;
 	public  int srcPort;
-	public  long	dstIpv4;
+	public  int	dstIpv4;
 	public  int dstPort;
 	public  int	outByte;	// Traffic from src to dst, in bytes
 	public  int	inByte;		// Traffic from dst to src, in bytes
@@ -29,7 +29,7 @@ public class PanabitMsgApp extends PanabitMsg {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+this.getSrcIpv4()+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup"+this.getSrcGroup()+"  "+"Desip:"+this.getDstIpv4()+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
+		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+Integer.toHexString(this.getSrcIpv4())+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup"+this.getSrcGroup()+"  "+"Desip:"+Integer.toHexString(this.getDstIpv4())+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
 		return s;
 	}
 
@@ -49,19 +49,19 @@ public class PanabitMsgApp extends PanabitMsg {
 		this.connType = connType;
 	}
 
-	public long getSrcGroup() {
+	public int getSrcGroup() {
 		return srcGroup;
 	}
 
-	public void setSrcGroup(long srcGroup) {
+	public void setSrcGroup(int srcGroup) {
 		this.srcGroup = srcGroup;
 	}
 
-	public long getDstGroup() {
+	public int getDstGroup() {
 		return dstGroup;
 	}
 
-	public void setDstGroup(long dstGroup) {
+	public void setDstGroup(int dstGroup) {
 		this.dstGroup = dstGroup;
 	}
 
@@ -81,11 +81,11 @@ public class PanabitMsgApp extends PanabitMsg {
 		this.endTime = endTime;
 	}
 
-	public long getSrcIpv4() {
+	public int getSrcIpv4() {
 		return srcIpv4;
 	}
 
-	public void setSrcIpv4(long srcIpv4) {
+	public void setSrcIpv4(int srcIpv4) {
 		this.srcIpv4 = srcIpv4;
 	}
 
@@ -97,11 +97,11 @@ public class PanabitMsgApp extends PanabitMsg {
 		this.srcPort = srcPort;
 	}
 
-	public long getDstIpv4() {
+	public int getDstIpv4() {
 		return dstIpv4;
 	}
 
-	public void setDstIpv4(long dstIpv4) {
+	public void setDstIpv4(int dstIpv4) {
 		this.dstIpv4 = dstIpv4;
 	}
 
@@ -129,7 +129,7 @@ public class PanabitMsgApp extends PanabitMsg {
 		this.inByte = inByte;
 	}
 
-
+	
 
 	
 }

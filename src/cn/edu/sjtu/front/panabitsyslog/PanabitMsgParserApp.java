@@ -32,19 +32,19 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		panabitMsgApp.setEndTime(Integer.parseInt(a.substring(a.indexOf("-")+1)));
 		String b=ss[2];
 		String srcip=b.substring(0,b.indexOf(":"));
-		long longSrcIp = IpConvert.iptolong(srcip);
-        panabitMsgApp.setSrcIpv4(longSrcIp);
+		int intSrcIp = IpConvert.iptoInt(srcip);
+        panabitMsgApp.setSrcIpv4(intSrcIp);
 //        insert srcgroup
-//        panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(longSrcIp).netGroup);
+        panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(intSrcIp).netGroup);
   
         panabitMsgApp.setSrcPort(Integer.parseInt(b.substring(b.indexOf(":")+1,b.indexOf("-"))));
 		String c[]=b.split("-");
 		String d=c[1];
 		String desip=d.substring(0,d.indexOf(":"));
-		long longDetIp = IpConvert.iptolong(desip);
-		panabitMsgApp.setDstIpv4(longDetIp);
+		int intDetIp = IpConvert.iptoInt(desip);
+		panabitMsgApp.setDstIpv4(intDetIp);
 //		insert dstgroup
-//		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(longDetIp).netGroup);
+		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(intDetIp).netGroup);
 		panabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
 		panabitMsgApp.setInByte(Integer.parseInt(ss[3]));
 		panabitMsgApp.setOutByte(Integer.parseInt(ss[4]));
