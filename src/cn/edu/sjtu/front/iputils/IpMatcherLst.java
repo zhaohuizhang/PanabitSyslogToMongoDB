@@ -17,17 +17,15 @@ public class IpMatcherLst implements IpMatcher {
 	public static ArrayList<Ipv4NetAddr> ipv4NetAddrList = null;
 	
 	/**
+	 * @throws IOException 
 	 * 
 	 */
-	public IpMatcherLst() {
+	public IpMatcherLst() throws IOException {
 		// TODO Auto-generated constructor stub
-	}
-	
-	public void ListConstruction() throws IOException{
 		if (ipv4NetAddrList == null) {
 			ipv4NetAddrList = new ArrayList<Ipv4NetAddr>(200);
 
-			File filename = new File("./net.txt"); 
+			File filename = new File(IpMatcherConf.NETFILE); 
 			BufferedReader in = new BufferedReader(new FileReader(filename));
 			String readIn;
 			String[] subReadIn;
@@ -57,7 +55,11 @@ public class IpMatcherLst implements IpMatcher {
 				}
 			}
 		}
-}
+	}
+	
+//	public void ListConstruction() throws IOException{
+//		
+//}
 
 	/* (non-Javadoc)
 	 * @see cn.edu.sjtu.front.iputils.IpMatcher#ipMatch(int)
@@ -89,13 +91,13 @@ public class IpMatcherLst implements IpMatcher {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		IpMatcherLst test = new IpMatcherLst();
-		test.ListConstruction();
-		System.out.println(Long.toHexString(test.ipMatch(0x6FBA1807).netAddr).toUpperCase());
-		System.out.println(test.ipMatch(0x6FBA1809).maskLen);
-		System.out.println(test.ipMatch(0x6FBA1809).netGroup);
-	}
+//	public static void main(String[] args) throws IOException {
+//		// TODO Auto-generated method stub
+//		IpMatcherLst test = new IpMatcherLst();
+////		test.ListConstruction();
+//		System.out.println(Long.toHexString(test.ipMatch(0x6FBA1807).netAddr).toUpperCase());
+//		System.out.println(test.ipMatch(0x6FBA1809).maskLen);
+//		System.out.println(test.ipMatch(0x6FBA1809).netGroup);
+//	}
 
 }

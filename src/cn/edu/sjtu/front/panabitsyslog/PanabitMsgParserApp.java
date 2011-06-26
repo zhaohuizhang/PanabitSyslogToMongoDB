@@ -3,9 +3,12 @@
  */
 package cn.edu.sjtu.front.panabitsyslog;
 
+import java.io.IOException;
+
+import cn.edu.sjtu.front.iputils.IpConvert;
 import cn.edu.sjtu.front.iputils.IpMatcher;
 import cn.edu.sjtu.front.iputils.IpMatcherLst;
-import cn.edu.sjtu.front.iputils.Ipv4NetAddr;
+//import cn.edu.sjtu.front.iputils.IpMatcherLst;
 
 /**
  * @author jianwen,zhangzhaohui
@@ -15,43 +18,49 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 
 	public IpMatcher ipMatcher;
 	
-	@Override
-	public PanabitMsg parse(String msg) {
-		PanabitMsg panabitMsg = new PanabitMsgApp();
+	    
+	public PanabitMsgApp parse(String msg) {
+		PanabitMsgApp panabitMsgApp = new PanabitMsgApp();
+		
 		// TODO Auto-generated method stub
 		//the udp parse,  operation of string
 		String ss[]=msg.split(" ");
-		PanabitMsgApp.setAppType(msg.substring(6,msg.indexOf(".")));
-		PanabitMsgApp.setConnType(msg.substring(msg.indexOf(".")+1, msg.indexOf(" ")));
+		panabitMsgApp.setAppType(msg.substring(6,msg.indexOf(".")));
+		panabitMsgApp.setConnType(msg.substring(msg.indexOf(".")+1, msg.indexOf(" ")));
 		String a=ss[1];
-		PanabitMsgApp.setStartTime(Integer.parseInt(a.substring(0,a.indexOf("-") )));
-		PanabitMsgApp.setEndTime(Integer.parseInt(a.substring(a.indexOf("-")+1)));
+		panabitMsgApp.setStartTime(Integer.parseInt(a.substring(0,a.indexOf("-") )));
+		panabitMsgApp.setEndTime(Integer.parseInt(a.substring(a.indexOf("-")+1)));
 		String b=ss[2];
 		String srcip=b.substring(0,b.indexOf(":"));
-        PanabitMsgApp.setSrcIpv4(iptolong(srcip));
-        
-        PanabitMsgApp.setSrcPort(Integer.parseInt(b.substring(b.indexOf(":")+1,b.indexOf("-"))));
+		long longSrcIp = IpConvert.iptolong(srcip);
+        panabitMsgApp.setSrcIpv4(longSrcIp);
+//        insert srcgroup
+//        panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(longSrcIp).netGroup);
+  
+        panabitMsgApp.setSrcPort(Integer.parseInt(b.substring(b.indexOf(":")+1,b.indexOf("-"))));
 		String c[]=b.split("-");
 		String d=c[1];
 		String desip=d.substring(0,d.indexOf(":"));
-		PanabitMsgApp.setDstIpv4(iptolong(desip));
+		long longDetIp = IpConvert.iptolong(desip);
+		panabitMsgApp.setDstIpv4(longDetIp);
+//		insert dstgroup
+//		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(longDetIp).netGroup);
+		panabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
+		panabitMsgApp.setInByte(Integer.parseInt(ss[3]));
+		panabitMsgApp.setOutByte(Integer.parseInt(ss[4]));
 		
-		PanabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
-		PanabitMsgApp.setInByte(Integer.parseInt(ss[3]));
-		PanabitMsgApp.setOutByte(Integer.parseInt(ss[4]));
-		
-		return panabitMsg;
+		return panabitMsgApp;
 	}
 	
-	//ip convert to long 
-    public long iptolong(String t){
-    	String[] ips = t.split("[.]");  
-        long num =   16777216L*Long.parseLong(ips[0]) + 65536L*Long.parseLong(ips[1]) + 256*Long.parseLong(ips[2]) + Long.parseLong(ips[3]);  
-    	return num;
-    }
+	
 
-    public PanabitMsgParserApp() {
-    	ipMatcher = new IpMatcherLst();
+    public PanabitMsgParserApp(){
+    	try {
+			ipMatcher = new IpMatcherLst();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 }

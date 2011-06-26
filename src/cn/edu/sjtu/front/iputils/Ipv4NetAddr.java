@@ -9,9 +9,9 @@ package cn.edu.sjtu.front.iputils;
  */
 public class Ipv4NetAddr {
 
-	long netAddr;
-	long maskLen;
-	long netGroup;
+	public long netAddr;
+	public long maskLen;
+	public long netGroup;
 	
 	public Ipv4NetAddr() {
 		netAddr = 0x00000000;
@@ -29,9 +29,9 @@ public class Ipv4NetAddr {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

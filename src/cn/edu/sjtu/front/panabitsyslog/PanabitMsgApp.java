@@ -9,16 +9,18 @@ package cn.edu.sjtu.front.panabitsyslog;
  */
 public class PanabitMsgApp extends PanabitMsg {
 
-	public static String appType;
-	public static String connType;
-	public static long startTime;
-	public static long endTime;
-	public static long	srcIpv4;
-	public static int srcPort;
-	public static long	dstIpv4;
-	public static int dstPort;
-	public static int	outByte;	// Traffic from src to dst, in bytes
-	public static int	inByte;		// Traffic from dst to src, in bytes
+	public  String appType;
+	public  String connType;
+	public  long srcGroup;
+	public  long dstGroup;
+	public  long startTime;
+	public  long endTime;
+	public  long	srcIpv4;
+	public  int srcPort;
+	public  long	dstIpv4;
+	public  int dstPort;
+	public  int	outByte;	// Traffic from src to dst, in bytes
+	public  int	inByte;		// Traffic from dst to src, in bytes
 	
 	public PanabitMsgApp() {
 		msgType = PanabitMsgEnum.MSGAPP;
@@ -27,128 +29,107 @@ public class PanabitMsgApp extends PanabitMsg {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		String s="Application:"+PanabitMsgApp.getAppType()+"  "+"Protocol:"+PanabitMsgApp.getConnType()+"  "+"StartTime:"+PanabitMsgApp.getStartTime()+"  "+"EndTime:"+PanabitMsgApp.getEndTime()+"  "+"Srcip:"+PanabitMsgApp.getSrcIpv4()+"  "+"Srcport:"+PanabitMsgApp.getSrcPort()+"  "+"Desip:"+PanabitMsgApp.getDstIpv4()+"  "+"Desport:"+PanabitMsgApp.getDstPort()+"  "+"Inbyte:"+PanabitMsgApp.getInByte()+"  "+"Outbyte:"+PanabitMsgApp.getOutByte();
+		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+this.getSrcIpv4()+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup"+this.getSrcGroup()+"  "+"Desip:"+this.getDstIpv4()+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
 		return s;
 	}
 
-
-
-	public static String getAppType() {
+	public String getAppType() {
 		return appType;
 	}
 
-
-
-	public static void setAppType(String appType) {
-		PanabitMsgApp.appType = appType;
+	public void setAppType(String appType) {
+		this.appType = appType;
 	}
 
-
-
-	public static String getConnType() {
+	public String getConnType() {
 		return connType;
 	}
 
-
-
-	public static void setConnType(String connType) {
-		PanabitMsgApp.connType = connType;
+	public void setConnType(String connType) {
+		this.connType = connType;
 	}
 
+	public long getSrcGroup() {
+		return srcGroup;
+	}
 
+	public void setSrcGroup(long srcGroup) {
+		this.srcGroup = srcGroup;
+	}
 
-	public static long getStartTime() {
+	public long getDstGroup() {
+		return dstGroup;
+	}
+
+	public void setDstGroup(long dstGroup) {
+		this.dstGroup = dstGroup;
+	}
+
+	public long getStartTime() {
 		return startTime;
 	}
 
-
-
-	public static void setStartTime(long startTime) {
-		PanabitMsgApp.startTime = startTime;
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
 	}
 
-
-
-	public static long getEndTime() {
+	public long getEndTime() {
 		return endTime;
 	}
 
-
-
-	public static void setEndTime(long endTime) {
-		PanabitMsgApp.endTime = endTime;
+	public void setEndTime(long endTime) {
+		this.endTime = endTime;
 	}
 
-
-
-	public static long getSrcIpv4() {
+	public long getSrcIpv4() {
 		return srcIpv4;
 	}
 
-
-
-	public static void setSrcIpv4(long srcIpv4) {
-		PanabitMsgApp.srcIpv4 = srcIpv4;
+	public void setSrcIpv4(long srcIpv4) {
+		this.srcIpv4 = srcIpv4;
 	}
 
-
-
-	public static int getSrcPort() {
+	public int getSrcPort() {
 		return srcPort;
 	}
 
-
-
-	public static void setSrcPort(int srcPort) {
-		PanabitMsgApp.srcPort = srcPort;
+	public void setSrcPort(int srcPort) {
+		this.srcPort = srcPort;
 	}
 
-
-
-	public static long getDstIpv4() {
+	public long getDstIpv4() {
 		return dstIpv4;
 	}
 
-
-
-	public static void setDstIpv4(long dstIpv4) {
-		PanabitMsgApp.dstIpv4 = dstIpv4;
+	public void setDstIpv4(long dstIpv4) {
+		this.dstIpv4 = dstIpv4;
 	}
 
-
-
-	public static int getDstPort() {
+	public int getDstPort() {
 		return dstPort;
 	}
 
-
-
-	public static void setDstPort(int dstPort) {
-		PanabitMsgApp.dstPort = dstPort;
+	public void setDstPort(int dstPort) {
+		this.dstPort = dstPort;
 	}
 
-
-
-	public static int getOutByte() {
+	public int getOutByte() {
 		return outByte;
 	}
 
-
-
-	public static void setOutByte(int outByte) {
-		PanabitMsgApp.outByte = outByte;
+	public void setOutByte(int outByte) {
+		this.outByte = outByte;
 	}
 
-
-
-	public static int getInByte() {
+	public int getInByte() {
 		return inByte;
 	}
 
-
-
-	public static void setInByte(int inByte) {
-		PanabitMsgApp.inByte = inByte;
+	public void setInByte(int inByte) {
+		this.inByte = inByte;
 	}
 
+
+
+	
 }

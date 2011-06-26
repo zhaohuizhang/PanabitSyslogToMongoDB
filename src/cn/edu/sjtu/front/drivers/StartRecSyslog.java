@@ -56,6 +56,13 @@ public class StartRecSyslog {
 				// System.out.println(rawMsg);
 				int udpSize = receivePacket.getLength();
 				String strUDP = new String(rawMsg, 0, udpSize);
+				System.out.println(strUDP);
+				msgPanabit = panabitParser.parseMsg(strUDP);
+				
+				
+				System.out.println(msgPanabit);
+				
+				
 				// TODO: Remove the console output
 				// System.out.println(strUDP+"\r\n");
 			    // panabitParser.parseMsg(strUDP);
@@ -71,11 +78,11 @@ public class StartRecSyslog {
 			    //the solution of parse write into txtfloder
 
 			    // TODO: Change to a 'type-independent' style 
-			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
+//			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
 //			    output.write(panbitmsgapp.toString()+"\r\n");
 			    
 			    // TODO: NOT to call toString Explicitly
-			    System.out.println(panbitmsgapp.toString() + "\r\n");
+//			    System.out.println(panbitmsgapp.toString() + "\r\n");
 			    
 			    // TODO: Parse the PanabitMsg Object into MongoDB 'String'
 			    // TODO: Write into MongoDB
