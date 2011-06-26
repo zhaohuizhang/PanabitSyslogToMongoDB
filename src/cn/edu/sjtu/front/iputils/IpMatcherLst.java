@@ -65,18 +65,28 @@ public class IpMatcherLst implements IpMatcher {
 	 * @see cn.edu.sjtu.front.iputils.IpMatcher#ipMatch(int)
 	 */
 
-	public Ipv4NetAddr ipMatch(long ipv4Addr) {
-		Ipv4NetAddr result = null; 
+	public Ipv4NetAddr ipMatch(int ipv4Addr) {
+		Ipv4NetAddr result = null;
+	
 
-		for (Ipv4NetAddr tempInList : ipv4NetAddrList){
+		for (Ipv4NetAddr addrInList : ipv4NetAddrList){
 //			System.out.println(Long.toHexString(tp.netAddr).toUpperCase()+" "+tp.maskLen+" "+tp.netGroup);
-			long maskLen = (-1) << ((long)32-tempInList.maskLen);
-			if ((ipv4Addr & maskLen) == tempInList.netAddr){
-				result = new Ipv4NetAddr(tempInList);
+			int netMask = ((int)(-1)) << ((int)32-addrInList.maskLen);
+			if ((ipv4Addr & netMask) == addrInList.netAddr){
+				result = new Ipv4NetAddr(addrInList);
 				break;
 			}
 		}
-		return result;
+		
+		if (result == null) {
+			System.out.println("_____--________:"+Integer.toHexString(ipv4Addr));
+			
+			System.exit(0);
+			return null;
+		} else {
+			return result;
+		}
+		
 	}
 
 	/* (non-Javadoc)
@@ -91,13 +101,13 @@ public class IpMatcherLst implements IpMatcher {
 	 * @param args
 	 * @throws IOException 
 	 */
-//	public static void main(String[] args) throws IOException {
-//		// TODO Auto-generated method stub
-//		IpMatcherLst test = new IpMatcherLst();
-////		test.ListConstruction();
-//		System.out.println(Long.toHexString(test.ipMatch(0x6FBA1807).netAddr).toUpperCase());
-//		System.out.println(test.ipMatch(0x6FBA1809).maskLen);
-//		System.out.println(test.ipMatch(0x6FBA1809).netGroup);
-//	}
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		IpMatcherLst test = new IpMatcherLst();
+//		test.ListConstruction();
+		System.out.println(Long.toHexString(test.ipMatch(0x97491205).netAddr).toUpperCase());
+		System.out.println(test.ipMatch(0x97491205).maskLen);
+		System.out.println(test.ipMatch(0x97491205).netGroup);
+	}
 
 }
