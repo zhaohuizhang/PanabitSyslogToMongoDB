@@ -66,11 +66,11 @@ public class IpMatcherLst implements IpMatcher {
 	 */
 
 	public Ipv4NetAddr ipMatch(int ipv4Addr) {
+//		Ipv4NetAddr result = new Ipv4NetAddr();
 		Ipv4NetAddr result = null;
-	
 
 		for (Ipv4NetAddr addrInList : ipv4NetAddrList){
-//			System.out.println(Long.toHexString(tp.netAddr).toUpperCase()+" "+tp.maskLen+" "+tp.netGroup);
+//			System.out.println(Integer.toHexString(addrInList.netAddr).toUpperCase()+" "+addrInList.maskLen+" "+addrInList.netGroup);
 			int netMask = ((int)(-1)) << ((int)32-addrInList.maskLen);
 			if ((ipv4Addr & netMask) == addrInList.netAddr){
 				result = new Ipv4NetAddr(addrInList);
@@ -105,7 +105,7 @@ public class IpMatcherLst implements IpMatcher {
 		// TODO Auto-generated method stub
 		IpMatcherLst test = new IpMatcherLst();
 //		test.ListConstruction();
-		System.out.println(Long.toHexString(test.ipMatch(0x97491205).netAddr).toUpperCase());
+		System.out.println(Integer.toHexString(test.ipMatch(0x97491205).netAddr).toUpperCase());
 		System.out.println(test.ipMatch(0x97491205).maskLen);
 		System.out.println(test.ipMatch(0x97491205).netGroup);
 	}
