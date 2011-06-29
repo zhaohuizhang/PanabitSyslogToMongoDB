@@ -50,8 +50,8 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		
 		
 		panabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
-		panabitMsgApp.setInByte(Integer.parseInt(ss[3]));
-		panabitMsgApp.setOutByte(Integer.parseInt(ss[4]));
+		panabitMsgApp.setInByte(Long.parseLong(ss[3]));
+		panabitMsgApp.setOutByte(Long.parseLong(ss[4]));
 		
 		return panabitMsgApp;
 	}
