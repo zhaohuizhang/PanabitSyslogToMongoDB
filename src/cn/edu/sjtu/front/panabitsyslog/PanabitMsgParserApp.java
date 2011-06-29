@@ -35,7 +35,7 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		int intSrcIp = IpConvert.iptoInt(srcip);
         panabitMsgApp.setSrcIpv4(intSrcIp);
 //        insert srcgroup
-//        panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(intSrcIp).netGroup);
+        panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(intSrcIp).netGroup);
   
         panabitMsgApp.setSrcPort(Integer.parseInt(b.substring(b.indexOf(":")+1,b.indexOf("-"))));
 		String c[]=b.split("-");
@@ -45,7 +45,7 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		panabitMsgApp.setDstIpv4(intDetIp);
 //		insert dstgroup
 		
-//		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(intDetIp).netGroup);
+		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(intDetIp).netGroup);
 		
 		
 		

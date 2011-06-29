@@ -19,8 +19,8 @@ public class PanabitMsgApp extends PanabitMsg {
 	public  int srcPort;
 	public  int	dstIpv4;
 	public  int dstPort;
-	public  int	outByte;	// Traffic from src to dst, in bytes
-	public  int	inByte;		// Traffic from dst to src, in bytes
+	public  long	outByte;	// Traffic from src to dst, in bytes
+	public  long	inByte;		// Traffic from dst to src, in bytes
 	
 	public PanabitMsgApp() {
 		msgType = PanabitMsgEnum.MSGAPP;
@@ -29,7 +29,7 @@ public class PanabitMsgApp extends PanabitMsg {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+Integer.toHexString(this.getSrcIpv4())+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup"+this.getSrcGroup()+"  "+"Desip:"+Integer.toHexString(this.getDstIpv4())+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
+		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+Integer.toHexString(this.getSrcIpv4())+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup:"+this.getSrcGroup()+"  "+"Desip:"+Integer.toHexString(this.getDstIpv4())+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup:"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
 		return s;
 	}
 
@@ -113,22 +113,23 @@ public class PanabitMsgApp extends PanabitMsg {
 		this.dstPort = dstPort;
 	}
 
-	public int getOutByte() {
+	public long getOutByte() {
 		return outByte;
 	}
 
-	public void setOutByte(int outByte) {
+	public void setOutByte(long outByte) {
 		this.outByte = outByte;
 	}
 
-	public int getInByte() {
+	public long getInByte() {
 		return inByte;
 	}
 
-	public void setInByte(int inByte) {
+	public void setInByte(long inByte) {
 		this.inByte = inByte;
 	}
 
+	
 	
 
 	
