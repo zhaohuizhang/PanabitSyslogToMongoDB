@@ -8,6 +8,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
 
 import cn.edu.sjtu.front.panabitsyslog.PanabitMsg;
 import cn.edu.sjtu.front.panabitsyslog.PanabitMsgApp;
@@ -37,11 +43,14 @@ public class StartRecSyslog {
 //		    System.out.print("this file  exist");
 //		    test.createNewFile();//create new file
 //		   }
-		
+	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd");
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-
+        Mongo mongo = new Mongo("10.50.9.203");
+        DB db = mongo.getDB("DBsyslog");
+        DBCollection panabitsyslogs = db.getCollection("panabit_"+df.format(new Date()));
+      
 		try {
 			DatagramSocket receiveScoket = new DatagramSocket(30514);
 			byte buf[] = new byte[1024];
@@ -61,6 +70,10 @@ public class StartRecSyslog {
 				
 				
 				System.out.println(msgPanabit);
+				if(msgPanabit != null){
+				panabitsyslogs.insert(msgPanabit.toMongoDBObj());
+				}			
+				
 				
 				
 				// TODO: Remove the console output
