@@ -24,13 +24,13 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		
 		// TODO Auto-generated method stub
 		//the udp parse,  operation of string
-		String ss[]=msg.split(" ");
+		String ssApp[]=msg.split(" ");
 		panabitMsgApp.setAppType(msg.substring(6,msg.indexOf(".")));
 		panabitMsgApp.setConnType(msg.substring(msg.indexOf(".")+1, msg.indexOf(" ")));
-		String a=ss[1];
+		String a=ssApp[1];
 		panabitMsgApp.setStartTime(Integer.parseInt(a.substring(0,a.indexOf("-") )));
 		panabitMsgApp.setEndTime(Integer.parseInt(a.substring(a.indexOf("-")+1)));
-		String b=ss[2];
+		String b=ssApp[2];
 		String srcip=b.substring(0,b.indexOf(":"));
 		int intSrcIp = IpConvert.iptoInt(srcip);
         panabitMsgApp.setSrcIpv4(intSrcIp);
@@ -50,8 +50,8 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		
 		
 		panabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
-		panabitMsgApp.setInByte(Long.parseLong(ss[3]));
-		panabitMsgApp.setOutByte(Long.parseLong(ss[4]));
+		panabitMsgApp.setInByte(Long.parseLong(ssApp[3]));
+		panabitMsgApp.setOutByte(Long.parseLong(ssApp[4]));
 		
 		return panabitMsgApp;
 	}

@@ -20,6 +20,10 @@ public class PanabitMsgParser {
 	public PanabitMsg parseMsg(String msg){
 
 		// judge the type and select Parser
+		if(msg.startsWith("<PNB1>natip")){
+			PanabitMsgParserNat panbitNatPaser = new PanabitMsgParserNat();
+			return panbitNatPaser.parse(msg);
+		}else{
 		String b=msg.substring(6,msg.indexOf("."));
 		String a="qqlogin,qqlogoff,msnlogin,dnsquery,pop3login,www,usrauth,ipnode,natip";
 		if(a.indexOf(b)==-1){
@@ -30,6 +34,9 @@ public class PanabitMsgParser {
 			// IF(msg_is_a_app_msg)
 			
 		}
+			
+		}
+		
 		
 		return null;
 		// Call the parser.parse
@@ -46,9 +53,9 @@ public class PanabitMsgParser {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }
