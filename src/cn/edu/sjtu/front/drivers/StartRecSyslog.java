@@ -43,6 +43,7 @@ public class StartRecSyslog {
 //		    System.out.print("this file  exist");
 //		    test.createNewFile();//create new file
 //		   }
+		
 	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd");
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
