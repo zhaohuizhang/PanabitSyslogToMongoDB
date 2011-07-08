@@ -86,6 +86,7 @@ public class StartRecSyslog {
 			    // System.out.println(msgPanabit);
 			    // Database.MongoDB.Write(msgPanabit);
 			    
+				
 			    //TODO delete
 //			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
 //			    ip.parse(strUDP);
