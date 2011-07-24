@@ -29,14 +29,16 @@ public class IpMatcherLst implements IpMatcher {
 			BufferedReader in = new BufferedReader(new FileReader(filename));
 			String readIn;
 			String[] subReadIn;
-			
-			readIn = in.readLine();
-			subReadIn = readIn.split(" ");
 			Ipv4NetAddr tempToAdd = new Ipv4NetAddr();
-			tempToAdd.netAddr = Integer.parseInt(subReadIn[0].substring(2), 16);
-			tempToAdd.maskLen = Integer.parseInt(subReadIn[1]);
-			tempToAdd.netGroup = Integer.parseInt(subReadIn[2]);
-			ipv4NetAddrList.add(tempToAdd);
+			
+			// commentted BY wei.jianwen@gmail.com
+//			readIn = in.readLine();
+//			subReadIn = readIn.split(" ");
+//			Ipv4NetAddr tempToAdd = new Ipv4NetAddr();
+//			tempToAdd.netAddr = Integer.parseInt(subReadIn[0].substring(2), 16);
+//			tempToAdd.maskLen = Integer.parseInt(subReadIn[1]);
+//			tempToAdd.netGroup = Integer.parseInt(subReadIn[2]);
+//			ipv4NetAddrList.add(tempToAdd);
        
 			while((readIn = in.readLine()) != null){
 				subReadIn = readIn.split(" ");
