@@ -47,10 +47,11 @@ public class StartRecSyslog {
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-        Mongo mongo = new Mongo("10.50.9.203");
+        Mongo mongo = new Mongo("10.50.15.203");
         DB db = mongo.getDB("DBsyslog");
         DBCollection panabitsyslogs = db.getCollection("panabit_"+df.format(new Date()));
-      
+//        DBCollection panabitCollection = db.getCollection("panabit_20110706");
+//        System.out.println(panabitCollection.find().count());
 		try {
 			DatagramSocket receiveScoket = new DatagramSocket(30514);
 			byte buf[] = new byte[1024];
@@ -71,31 +72,17 @@ public class StartRecSyslog {
 				
 				System.out.println(msgPanabit);
 				if(msgPanabit != null){
+				System.out.println(msgPanabit.toMongoDBObj());
 				panabitsyslogs.insert(msgPanabit.toMongoDBObj());
 				}			
-				
-				
-				
-				// TODO: Remove the console output
-				// System.out.println(strUDP+"\r\n");
-			    // panabitParser.parseMsg(strUDP);
-			    
-			    // TODO: DELETE the DEMO following code (by Jianwen)
-			    // msgPanabit = panabitParser.parseMsg(strUDP);
-			    // System.out.println(msgPanabit);
-			    // Database.MongoDB.Write(msgPanabit);
-			    
-			    //TODO delete
-//			    PanabitMsgParserApp ip = new PanabitMsgParserApp(); 
-//			    ip.parse(strUDP);
+
 			    //the solution of parse write into txtfloder
 
 			    // TODO: Change to a 'type-independent' style 
 //			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
 //			    output.write(panbitmsgapp.toString()+"\r\n");
 			    
-			    // TODO: NOT to call toString Explicitly
-//			    System.out.println(panbitmsgapp.toString() + "\r\n");
+
 			    
 			    // TODO: Parse the PanabitMsg Object into MongoDB 'String'
 			    // TODO: Write into MongoDB

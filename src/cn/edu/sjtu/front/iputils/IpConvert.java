@@ -33,7 +33,7 @@ public class IpConvert {
     	int num = (Integer.parseInt(ips[0])<<24) | (Integer.parseInt(ips[1])<<16) | (Integer.parseInt(ips[2])<<8) | (Integer.parseInt(ips[3]));
 		return num;
 	}
-	   public String getLongIpToString(long ipLong) {   
+	   public static String getLongIpToString(long ipLong) {   
 	        
 	        long mask[] = {0x000000FF,0x0000FF00,0x00FF0000,0xFF000000};  
 	        long num = 0;  
@@ -46,10 +46,10 @@ public class IpConvert {
 	        return ipInfo.toString();  
 	    }  
 //	   public static void main(String args[]){
-//		   IpConvert ipC = new IpConvert();
-//		   System.out.println(iptoInt("218.193.191.132"));
-//		   System.out.println(iptoInt("67.92.212.116"));
-//		   System.out.println(Integer.toHexString(1130157172));
+//		   
+////		   System.out.println(iptoInt("202.120.50.73"));
+////		   System.out.println(iptoInt("67.92.212.116"));
+//		   System.out.println(Integer.toHexString(-1062731708));
 //	   }
 
 }

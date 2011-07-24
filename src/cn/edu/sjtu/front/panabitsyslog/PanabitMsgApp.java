@@ -33,7 +33,7 @@ public class PanabitMsgApp extends PanabitMsg {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+Integer.toHexString(this.getSrcIpv4())+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup:"+this.getSrcGroup()+"  "+"Desip:"+Integer.toHexString(this.getDstIpv4())+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup:"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
+		String s="Application:"+this.getAppType()+"  "+"Protocol:"+this.getConnType()+"  "+"StartTime:"+this.getStartTime()+"  "+"EndTime:"+this.getEndTime()+"  "+"Srcip:"+this.getSrcIpv4()+"  "+"Srcport:"+this.getSrcPort()+"  "+"SrcGroup:"+this.getSrcGroup()+"  "+"Desip:"+this.getDstIpv4()+"  "+"Desport:"+this.getDstPort()+"  "+"DstGroup:"+this.getDstGroup()+"  "+"Inbyte:"+this.getInByte()+"  "+"Outbyte:"+this.getOutByte();
 		return s;
 	}
 
