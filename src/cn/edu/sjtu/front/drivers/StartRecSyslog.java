@@ -48,7 +48,7 @@ public class StartRecSyslog {
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-        Mongo mongo = new Mongo("10.50.15.203");
+        Mongo mongo = new Mongo("10.50.15.206");
         DB db = mongo.getDB("DBsyslog");
         DBCollection panabitsyslogs = db.getCollection("panabit_"+df.format(new Date()));
 //        DBCollection panabitCollection = db.getCollection("panabit_20110706");
