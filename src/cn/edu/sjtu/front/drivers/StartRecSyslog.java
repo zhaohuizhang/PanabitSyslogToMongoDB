@@ -43,6 +43,7 @@ public class StartRecSyslog {
 //		    System.out.print("this file  exist");
 //		    test.createNewFile();//create new file
 //		   }
+		
 	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd");
 		String strMsg = null;
 		PanabitMsg msgPanabit = null;
@@ -76,16 +77,6 @@ public class StartRecSyslog {
 				panabitsyslogs.insert(msgPanabit.toMongoDBObj());
 				}			
 
-			    //the solution of parse write into txtfloder
-
-			    // TODO: Change to a 'type-independent' style 
-//			    PanabitMsgApp panbitmsgapp = new PanabitMsgApp();
-//			    output.write(panbitmsgapp.toString()+"\r\n");
-			    
-
-			    
-			    // TODO: Parse the PanabitMsg Object into MongoDB 'String'
-			    // TODO: Write into MongoDB
 			    
 			}
 				
