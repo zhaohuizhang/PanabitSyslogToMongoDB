@@ -56,8 +56,8 @@ public class PanabitMsgNat extends PanabitMsg {
 
 	public String toString() {
 		// TODO Auto-generated method stub
-		System.out.println("Nat："+this.getNat()+"DetectTime："+this.getDetTime()+"ShareIp："+this.getShareIp()+"ShareIpGroup："+this.getShareIpGroup()+"InterIp："+this.getInterIp());
-		return null;
+		String s = "Nat："+this.getNat()+"DetectTime："+this.getDetTime()+"ShareIp："+this.getShareIp()+"ShareIpGroup："+this.getShareIpGroup()+"InterIp："+this.getInterIp();
+		return s;
 	}
 
 	public DBObject toMongoDBObj() {
