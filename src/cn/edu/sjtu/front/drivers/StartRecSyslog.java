@@ -67,13 +67,13 @@ public class StartRecSyslog {
 				// System.out.println(rawMsg);
 				int udpSize = receivePacket.getLength();
 				String strUDP = new String(rawMsg, 0, udpSize);
-				System.out.println(strUDP);
+				// System.out.println(strUDP);
 				msgPanabit = panabitParser.parseMsg(strUDP);
 				
 				
 				System.out.println(msgPanabit);
 				if(msgPanabit != null){
-				System.out.println(msgPanabit.toMongoDBObj());
+				// System.out.println(msgPanabit.toMongoDBObj());
 				panabitsyslogs.insert(msgPanabit.toMongoDBObj());
 				}			
 
