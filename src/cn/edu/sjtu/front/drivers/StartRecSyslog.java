@@ -71,7 +71,11 @@ public class StartRecSyslog {
 				msgPanabit = panabitParser.parseMsg(strUDP);
 				
 				
-				System.out.println(msgPanabit);
+				// System.out.println(msgPanabit);
+				
+				if (msgPanabit == null)
+					System.out.println("Null Msg:" + strUDP);
+				
 				if(msgPanabit != null){
 				// System.out.println(msgPanabit.toMongoDBObj());
 				panabitsyslogs.insert(msgPanabit.toMongoDBObj());
