@@ -50,8 +50,8 @@ public class StartRecSyslog {
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
 		Mongo mongo = new Mongo("10.50.15.206");
 		DB db = mongo.getDB("DBsyslog");
-		DBCollection panabitsyslogs = db.getCollection("panabit_"
-				+ df.format(new Date()));
+		DBCollection panabitsyslogs = db.getCollection("panabit_" + df.format(new Date()));
+		long packetCounter = 0;
 		// DBCollection panabitCollection =
 		// db.getCollection("panabit_20110706");
 		// System.out.println(panabitCollection.find().count());
@@ -63,6 +63,7 @@ public class StartRecSyslog {
 			// TOOD: Remove the file writing statements
 			// BufferedWriter output = new BufferedWriter(new FileWriter(test));
 			while (true) {
+				packetCounter++;
 				receiveScoket.receive(receivePacket);
 				char rawMsg[] = new String(receivePacket.getData())
 						.toCharArray();
@@ -75,7 +76,7 @@ public class StartRecSyslog {
 				msgPanabit = panabitParser.parseMsg(strUDP);
 
 				if (msgPanabit != null) {
-					System.out.println("<INFO>" + msgPanabit);
+					System.out.println("<PacketCount:" + packetCounter + ">" + msgPanabit);
 					// System.out.println(msgPanabit.toMongoDBObj());
 					panabitsyslogs.insert(msgPanabit.toMongoDBObj());
 				}
