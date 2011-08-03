@@ -43,12 +43,13 @@ public class StartRecSyslog {
 		// System.out.print("this file  exist");
 		// test.createNewFile();//create new file
 		// }
-
+        String mongoIp = args[0];
+        int mongoPort = Integer.parseInt(args[1]);
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-		String strMsg = null;
+	
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-		Mongo mongo = new Mongo("10.50.15.206");
+		Mongo mongo = new Mongo(mongoIp,mongoPort);
 		DB db = mongo.getDB("DBsyslog");
 		DBCollection panabitsyslogs = db.getCollection("panabit_" + df.format(new Date()));
 		long packetCounter = 0;
