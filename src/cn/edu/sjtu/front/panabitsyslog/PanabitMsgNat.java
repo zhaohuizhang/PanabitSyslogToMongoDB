@@ -72,4 +72,11 @@ public class PanabitMsgNat extends PanabitMsg {
 		return panabitMsgNat;
 	}
 
+	
+	public long getEndTime() {
+		// TODO Auto-generated method stub
+		
+		return this.getDetTime();
+	}
+
 }

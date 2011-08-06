@@ -15,5 +15,5 @@ public abstract class PanabitMsg {
 	
 	public abstract String toString();
 	public abstract DBObject toMongoDBObj();
-	
+	public abstract long getEndTime();
 }

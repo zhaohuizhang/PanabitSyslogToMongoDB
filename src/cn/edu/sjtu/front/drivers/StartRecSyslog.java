@@ -43,16 +43,19 @@ public class StartRecSyslog {
 		// System.out.print("this file  exist");
 		// test.createNewFile();//create new file
 		// }
-        String mongoIp = args[0];
-        int mongoPort = Integer.parseInt(args[1]);
+		// String mongoIp = args[0];
+		// int mongoPort = Integer.parseInt(args[1]);
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-	
+		
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-		Mongo mongo = new Mongo(mongoIp,mongoPort);
-		DB db = mongo.getDB("DBsyslog");
-		DBCollection panabitsyslogs = db.getCollection("panabit_" + df.format(new Date()));
+		// Mongo mongo = new Mongo(mongoIp,mongoPort);
+		// DB db = mongo.getDB("DBsyslog");
+		// DBCollection panabitsyslogs = db.getCollection("panabit_" +
+		// df.format(new Date()));
 		long packetCounter = 0;
+		Date currentTime = new Date();
+
 		// DBCollection panabitCollection =
 		// db.getCollection("panabit_20110706");
 		// System.out.println(panabitCollection.find().count());
@@ -60,11 +63,17 @@ public class StartRecSyslog {
 			DatagramSocket receiveScoket = new DatagramSocket(30514);
 			byte buf[] = new byte[1024];
 			DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+
 			System.out.println("Start to Receive Syslog Packet.");
 			// TOOD: Remove the file writing statements
 			// BufferedWriter output = new BufferedWriter(new FileWriter(test));
+			long sum = 0;
+			int i= 10000;
 			while (true) {
-				packetCounter++;
+               
+				if (packetCounter++ > i)
+					break;
+				
 				receiveScoket.receive(receivePacket);
 				char rawMsg[] = new String(receivePacket.getData())
 						.toCharArray();
@@ -77,13 +86,21 @@ public class StartRecSyslog {
 				msgPanabit = panabitParser.parseMsg(strUDP);
 
 				if (msgPanabit != null) {
-					System.out.println("<PacketCount:" + packetCounter + ">" + msgPanabit);
+					System.out.println("<PacketCount:" + packetCounter + ">"
+							+ msgPanabit);
 					// System.out.println(msgPanabit.toMongoDBObj());
-					panabitsyslogs.insert(msgPanabit.toMongoDBObj());
+					// panabitsyslogs.insert(msgPanabit.toMongoDBObj());
+					long curTime = currentTime.getTime() / 1000;
+					System.out.println(curTime);
+					System.out.println(msgPanabit.getEndTime());
+					sum += curTime - msgPanabit.getEndTime();
+					System.out.println(curTime - msgPanabit.getEndTime());
+                    
 				}
 
 			}
-
+         System.out.println(sum/i);
+         
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,5 +113,4 @@ public class StartRecSyslog {
 		// TODO
 		// LOOP END
 	}
-
 }
