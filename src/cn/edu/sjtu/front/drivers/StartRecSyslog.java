@@ -43,15 +43,18 @@ public class StartRecSyslog {
 		// System.out.print("this file  exist");
 		// test.createNewFile();//create new file
 		// }
-        String mongoIp = args[0];
-        int mongoPort = Integer.parseInt(args[1]);
+//        String mongoIp = args[0];
+//        int mongoPort = Integer.parseInt(args[1]);
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 	
 		PanabitMsg msgPanabit = null;
 		PanabitMsgParser panabitParser = new PanabitMsgParser();
-		Mongo mongo = new Mongo(mongoIp,mongoPort);
-		DB db = mongo.getDB("DBsyslog");
-		DBCollection panabitsyslogs = db.getCollection("panabit_" + df.format(new Date()));
+		Mongo mongodb1 = new Mongo("219.228.106.202");
+	    Mongo mongodb2 = new Mongo("219.228.106.203");
+		DB db1 = mongodb1.getDB("DBsyslog");
+		DB db2 = mongodb2.getDB("DBsyslog");
+		DBCollection panabitsyslogs1 = db1.getCollection("panabit_" + df.format(new Date()));
+		DBCollection panabitsyslogs2 = db2.getCollection("panabit_" + df.format(new Date()));
 		long packetCounter = 0;
 		// DBCollection panabitCollection =
 		// db.getCollection("panabit_20110706");
@@ -79,7 +82,8 @@ public class StartRecSyslog {
 				if (msgPanabit != null) {
 					System.out.println("<PacketCount:" + packetCounter + ">" + msgPanabit);
 					// System.out.println(msgPanabit.toMongoDBObj());
-					panabitsyslogs.insert(msgPanabit.toMongoDBObj());
+					panabitsyslogs1.insert(msgPanabit.toMongoDBObj());
+					panabitsyslogs2.insert(msgPanabit.toMongoDBObj());
 				}
 
 			}
