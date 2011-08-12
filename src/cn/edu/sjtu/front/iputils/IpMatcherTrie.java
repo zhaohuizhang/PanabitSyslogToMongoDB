@@ -104,6 +104,15 @@ public class IpMatcherTrie {
 		System.out.println(Integer.toHexString(test.ipMatch(0xAB891204).netAddr).toUpperCase());
 		System.out.println(test.ipMatch(0x97491205).maskLen);
 		System.out.println(test.ipMatch(0x97491205).netGroup);
+		
+		// TODO: IpMatchTrie & IpMatchLst veryfication
+		// Generate a ramdom Long int (64bit) and cuts it to normal int(32-bit);
+		// Match it with IpMatchLst 
+		// Match it with IpMatchTrie
+		// Check if they are "equal" with equals method
+		// do it 100000 times, if fail to be equal, break it.
+		// USE IpMather Interface
+		
 	}
 
 }
