@@ -42,6 +42,7 @@ public class IpMatcherLst implements IpMatcher {
 			while((readIn = in.readLine()) != null){
 				subReadIn = readIn.split(" ");
 				tempToAdd = new Ipv4NetAddr();
+				// TODO: Check if readLine is empty Line or if the split is valid
 				tempToAdd.netAddr = (int) Long.parseLong(subReadIn[0].substring(2),16) & 0xFFFFFFFF;
 				tempToAdd.maskLen = Integer.parseInt(subReadIn[1]);
 				tempToAdd.netGroup = Integer.parseInt(subReadIn[2]);
