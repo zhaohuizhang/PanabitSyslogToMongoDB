@@ -29,7 +29,7 @@ public class Ipv4NetAddr {
 		this();
 		netAddr = _v4netAddr.netAddr;
 		maskLen = _v4netAddr.maskLen;
-		netGroup = _v4netAddr.netGroup;
+		netGroup= _v4netAddr.netGroup;
 	}
 	
 	/*
@@ -41,7 +41,8 @@ public class Ipv4NetAddr {
 			(this.netGroup == _v4netAddr.netGroup)) 
 		{
 			return true;
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
@@ -57,13 +58,11 @@ public class Ipv4NetAddr {
 			System.out.println(ipv4Local.netAddr + " != " + ipv4Remote.netAddr);
 		}
 		
-		// Check if tey are "equal"
+		// Check if they are "equal"
 		if (ipv4Local.equals(ipv4Remote) == true) {
 			System.out.println(ipv4Local.netAddr + " equals " + ipv4Remote.netAddr);
 		} else {
 			System.out.println(ipv4Local.netAddr + " not equals " + ipv4Remote.netAddr);
-		}		
-		
+		}			
 	}
-	
 }
