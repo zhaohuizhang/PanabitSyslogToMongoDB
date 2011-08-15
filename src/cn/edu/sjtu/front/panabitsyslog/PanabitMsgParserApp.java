@@ -8,6 +8,7 @@ import java.io.IOException;
 import cn.edu.sjtu.front.iputils.IpConvert;
 import cn.edu.sjtu.front.iputils.IpMatcher;
 import cn.edu.sjtu.front.iputils.IpMatcherLst;
+import cn.edu.sjtu.front.iputils.IpMatcherTrie;
 //import cn.edu.sjtu.front.iputils.IpMatcherLst;
 
 /**
@@ -17,13 +18,11 @@ import cn.edu.sjtu.front.iputils.IpMatcherLst;
 public class PanabitMsgParserApp implements PanabitMsgParserInf {
 
 	public IpMatcher ipMatcher;
-	
 	    
 	public PanabitMsgApp parse(String msg) {
 		PanabitMsgApp panabitMsgApp = new PanabitMsgApp();
 		
 		// TODO Auto-generated method stub
-		//the udp parse,  operation of string
 		String ssApp[]=msg.split(" ");
 		panabitMsgApp.setAppType(msg.substring(6,msg.indexOf(".")));
 		panabitMsgApp.setConnType(msg.substring(msg.indexOf(".")+1, msg.indexOf(" ")));
@@ -34,7 +33,6 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		String srcip=b.substring(0,b.indexOf(":"));
 		int intSrcIp = IpConvert.iptoInt(srcip);
         panabitMsgApp.setSrcIpv4(intSrcIp);
-//        insert srcgroup
         panabitMsgApp.setSrcGroup(ipMatcher.ipMatch(intSrcIp).netGroup);
   
         panabitMsgApp.setSrcPort(Integer.parseInt(b.substring(b.indexOf(":")+1,b.indexOf("-"))));
@@ -43,11 +41,8 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 		String desip=d.substring(0,d.indexOf(":"));
 		int intDetIp = IpConvert.iptoInt(desip);
 		panabitMsgApp.setDstIpv4(intDetIp);
-//		insert dstgroup
-		
+
 		panabitMsgApp.setDstGroup(ipMatcher.ipMatch(intDetIp).netGroup);
-		
-		
 		
 		panabitMsgApp.setDstPort(Integer.parseInt(d.substring(d.indexOf(":")+1)));
 		panabitMsgApp.setInByte(Long.parseLong(ssApp[3]));
@@ -60,9 +55,9 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 
     public PanabitMsgParserApp(){
     	try {
-			ipMatcher = new IpMatcherLst();
+    		// ipMatcher = new IpMatcherLst();
+    		ipMatcher = new IpMatcherTrie();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

@@ -85,51 +85,41 @@ public class IpMatcherTrie implements IpMatcher{
 		while (curNode != null) {
 			if (curNode.leafNode != null)
 				result = new Ipv4NetAddr(curNode.leafNode);
+			
 			netMask = ((int)(1)) << ((int)32-i);
 			if ( (ipv4Addr & netMask) == 0 )
 				curNode = curNode.leftNode;
 			else
 				curNode = curNode.rightNode;
 			i++;
+			
 		}
 		return result;
 	}
 	
 	@Override
 	public Ipv4NetAddr ipMatch(Ipv4NetAddr v4NetAddr) {
-		// TODO Auto-generated method stub
 		return ipMatch(v4NetAddr.netAddr);
 	}
 
 	
 	public static void main(String[] args) throws IOException{
 		
-		IpMatcher test1= new IpMatcherLst();
-		IpMatcher  test2=new IpMatcherTrie();
-		int i;
-		for (i=0;i<100000;i++)
-		{  
-		   Random random=new Random();//创建Random对象
-		   Long intNumber=random.nextLong()&0xFFFFFFFF;//获取一个整型数
-	       int ipv4Addr=intNumber.intValue();//转换为32位
-		   if(test1.ipMatch(ipv4Addr).equals(test2.ipMatch(ipv4Addr))!=true)
-		   {	
-			   System.out.println("false"); 
+		IpMatcher matcherTrie = new IpMatcherTrie();
+		IpMatcher matcherLst = new IpMatcherLst();
+		Random rand = new Random();
+		
+		for (int i=0;i<100000;i++) {  
+		   Long intNumber = rand.nextLong() & 0xFFFFFFFF;
+	       int ipv4Addr = intNumber.intValue();
+	       Ipv4NetAddr addrLst = matcherLst.ipMatch(ipv4Addr);
+	       Ipv4NetAddr addrTrie = matcherTrie.ipMatch(ipv4Addr);
+		   if(!addrLst.equals(addrTrie)) {	
+			   System.out.println(ipv4Addr + "\nTrie Method:" + addrTrie + "\n" + "Lst Method:" + addrLst);
+			   return;
 		   }  
 		}
-		if(i==100000)
-        System.out.println("true") ;
+		System.out.println("Trie and Lst match successfully.");	
 	}
+
 }
-		/*System.out.println(Integer.toHexString(test.ipMatch(0x97491205).netAddr).toUpperCase());
-		System.out.println(test.ipMatch(0x97491205).maskLen);
-		System.out.println(test.ipMatch(0x97491205).netGroup);*/
-	
- 
-		// TODO: IpMatchTrie & IpMatchLst veryfication
-		// Generate a ramdom Long int (64bit) and cuts it to normal int(32-bit);
-		// Match it with IpMatchLst 
-		// Match it with IpMatchTrie
-		// Check if they are "equal" with equals method
-		// do it 100000 times, if fail to be equal, break it.
-		// USE IpMather Interface
