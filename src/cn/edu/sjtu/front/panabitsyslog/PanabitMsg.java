@@ -11,7 +11,7 @@ import com.mongodb.DBObject;
  */
 public abstract class PanabitMsg {
 
-	public PanabitMsgEnum msgType;
+	public EnumPanabitMsg msgType;
 	
 	public abstract String toString();
 	public abstract DBObject toMongoDBObj();

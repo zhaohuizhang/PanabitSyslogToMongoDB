@@ -9,7 +9,7 @@ import com.mongodb.DBObject;
  * @author jianwen
  *
  */
-public interface PanabitMsgMongoableInf {
+public interface InfPanabitMsgMongoable {
 
 	DBObject toMongoDBObj();
 	

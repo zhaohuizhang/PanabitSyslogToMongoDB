@@ -3,8 +3,6 @@
  */
 package cn.edu.sjtu.front.iputils;
 
-import java.beans.Introspector;
-
 /**
  * @author jianwen
  *

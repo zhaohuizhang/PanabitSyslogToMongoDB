@@ -15,19 +15,33 @@ public class PanabitMsgApp extends PanabitMsg {
 
 	public  String appType;
 	public  String connType;
-	public  int srcGroup;
-	public  int dstGroup;
 	public  long startTime;
 	public  long endTime;
 	public  int	srcIpv4;
 	public  int srcPort;
 	public  int	dstIpv4;
 	public  int dstPort;
+	public  int srcGroup;
+	public  int dstGroup;
 	public  long	outByte;	// Traffic from src to dst, in bytes
 	public  long	inByte;		// Traffic from dst to src, in bytes
 	
 	public PanabitMsgApp() {
-		msgType = PanabitMsgEnum.MSGAPP;
+		msgType = EnumPanabitMsg.MSGAPP;
+	}
+	
+	public PanabitMsgApp(PanabitMsgApp msgApp) {
+		this();
+		this.appType = msgApp.appType;
+		this.connType = msgApp.connType;
+		this.srcGroup = msgApp.srcGroup;
+		this.dstGroup = msgApp.dstGroup;
+		this.startTime = msgApp.startTime;
+		this.endTime = msgApp.endTime;
+		this.srcIpv4 = msgApp.srcIpv4;
+		this.srcPort = msgApp.srcPort;
+		this.outByte = msgApp.outByte;
+		this.inByte = msgApp.inByte;
 	}
 
 	public String toString() {

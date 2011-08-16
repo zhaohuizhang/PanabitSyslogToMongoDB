@@ -6,8 +6,9 @@ import cn.edu.sjtu.front.iputils.IpConvert;
 import cn.edu.sjtu.front.iputils.IpMatcher;
 import cn.edu.sjtu.front.iputils.IpMatcherLst;
 
-public class PanabitMsgParserNat  implements PanabitMsgParserInf{
+public class PanabitMsgParserNat  implements InfPanabitParser{
 
+	// Longgest Prefix IP Matcher
 	public IpMatcher ipMatcher;
 	
 	public PanabitMsg parse(String msg) {

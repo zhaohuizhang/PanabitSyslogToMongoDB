@@ -9,17 +9,17 @@ package cn.edu.sjtu.front.panabitsyslog;
  * @author jianwen
  *
  */
-public class PanabitMsgParser {
+public class PanabitProcessor {
 
 	// Parser List
 	public static PanabitMsgParserApp parserApp;
 	public static PanabitMsgParserNat parserNat;
-	// The undetremine parser
-	public PanabitMsgParserInf parser;
+	// Runtime Parser
+	public InfPanabitParser parser;
 	
 	// TODO: Other parsers, like PanabitMsgParserDNS, ...
 
-	public PanabitMsgParser() {
+	public PanabitProcessor() {
 		// The App Parser
 		if (parserApp == null) 
 			parserApp = new PanabitMsgParserApp();
@@ -32,19 +32,19 @@ public class PanabitMsgParser {
 	
 	public PanabitMsg parseMsg(String msg) {
 
-		PanabitMsgParserInf msgParser = null;
+		InfPanabitParser msgParser = null;
 
 		// judge the type and select Parser
 
 		// MsgType: NAT
 		if (msg.startsWith("<PNB1>natip")) {
-			msgParser = PanabitMsgParser.parserNat;
+			msgParser = PanabitProcessor.parserNat;
 		} else {
 			// MsgType: Connection
 			String msgHead = msg.substring(6, msg.indexOf("."));
 			String excludeType = "qqlogin,qqlogoff,msnlogin,pop3login,www,usrauth,ipnode,natip";
 			if (excludeType.indexOf(msgHead) == -1) {
-				msgParser = PanabitMsgParser.parserApp;
+				msgParser = PanabitProcessor.parserApp;
 			} else {
 				// Unhandled Msg Type
 				msgParser = null;

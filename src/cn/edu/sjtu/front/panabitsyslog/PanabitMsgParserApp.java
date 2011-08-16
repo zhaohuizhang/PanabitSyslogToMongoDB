@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import cn.edu.sjtu.front.iputils.IpConvert;
 import cn.edu.sjtu.front.iputils.IpMatcher;
-import cn.edu.sjtu.front.iputils.IpMatcherLst;
 import cn.edu.sjtu.front.iputils.IpMatcherTrie;
 //import cn.edu.sjtu.front.iputils.IpMatcherLst;
 
@@ -15,8 +14,9 @@ import cn.edu.sjtu.front.iputils.IpMatcherTrie;
  * @author jianwen,zhangzhaohui
  *
  */
-public class PanabitMsgParserApp implements PanabitMsgParserInf {
+public class PanabitMsgParserApp implements InfPanabitParser {
 
+	// Longgest Prefix IP Matcher
 	public IpMatcher ipMatcher;
 	    
 	public PanabitMsgApp parse(String msg) {
@@ -54,11 +54,11 @@ public class PanabitMsgParserApp implements PanabitMsgParserInf {
 	
 
     public PanabitMsgParserApp(){
-    	try {
-    		// ipMatcher = new IpMatcherLst();
+     	try {
+
     		ipMatcher = new IpMatcherTrie();
 		} catch (IOException e) {
-			e.printStackTrace();
+ 			e.printStackTrace();
 		}
     }
 

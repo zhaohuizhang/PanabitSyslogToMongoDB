@@ -7,7 +7,7 @@ package cn.edu.sjtu.front.panabitsyslog;
  * @author jianwen
  *
  */
-public enum PanabitMsgEnum {
+public enum EnumPanabitMsg {
 
 	MSGAPP,		// Application Event
 	MSGQQ,		// QQ Login Event
