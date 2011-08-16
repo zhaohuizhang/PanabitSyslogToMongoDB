@@ -35,8 +35,7 @@ public class StartRecSyslog {
         String dbDatabaseName = "dbpanabit";
         // MongoDB Connection Name: panabit_today
 		SimpleDateFormat today = new SimpleDateFormat("yyyyMMdd");
-		String dbCollectName = "panabit_" + today;
-		System.out.println("Collection Name: " + dbCollectName);
+		String dbCollectName = "panabit_" + today.format(new Date());
 		// MongoDB Connection, DB, Collections
 		Mongo mongo = new Mongo(mongoIp, mongoPort);
 		DB db = mongo.getDB(dbDatabaseName);
