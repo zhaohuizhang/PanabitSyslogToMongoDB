@@ -144,27 +144,5 @@ public class PanabitMsgApp extends PanabitMsg {
 	public void setInByte(long inByte) {
 		this.inByte = inByte;
 	}
-
-
-
-	
-	public DBObject toMongoDBObj() {
-		// TODO Auto-generated method stub
-		DBObject panabitsyslogapp = new BasicDBObject();
-		panabitsyslogapp.put("app", this.getAppType());
-		panabitsyslogapp.put("protocol", this.getConnType());
-		panabitsyslogapp.put("starttime", this.getStartTime());
-		panabitsyslogapp.put("endtime", this.getEndTime());
-		panabitsyslogapp.put("srcip", this.getSrcIpv4());
-		panabitsyslogapp.put("srcgroup", this.getSrcGroup());
-		panabitsyslogapp.put("srcport", this.getSrcPort());
-		panabitsyslogapp.put("dstcip", this.getDstIpv4());
-		panabitsyslogapp.put("dstgroup", this.getDstGroup());
-		panabitsyslogapp.put("dstport", this.getDstPort());
-		panabitsyslogapp.put("inbyte", this.getInByte());
-		panabitsyslogapp.put("outbyte", this.getOutByte());
-		return panabitsyslogapp;
-	}
-
 	
 }
