@@ -3,8 +3,6 @@
  */
 package cn.edu.sjtu.front.panabitsyslog;
 
-import com.mongodb.DBObject;
-
 /**
  * @author jianwen
  *

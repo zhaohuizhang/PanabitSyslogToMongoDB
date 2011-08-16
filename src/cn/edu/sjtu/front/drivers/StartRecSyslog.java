@@ -11,7 +11,6 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
-import com.mongodb.BasicDBObject;
 import cn.edu.sjtu.front.panabitsyslog.PanabitMsg;
 import cn.edu.sjtu.front.panabitsyslog.PanabitProcessor;
 import cn.edu.sjtu.front.panabitsyslog.mongoable.InfPanabitMsgMongoable;
