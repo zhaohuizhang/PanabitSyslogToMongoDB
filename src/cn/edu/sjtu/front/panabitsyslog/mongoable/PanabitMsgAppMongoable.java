@@ -6,6 +6,7 @@ package cn.edu.sjtu.front.panabitsyslog.mongoable;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
+import cn.edu.sjtu.front.panabitsyslog.PanabitMsg;
 import cn.edu.sjtu.front.panabitsyslog.PanabitMsgApp;
 
 /**

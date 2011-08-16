@@ -10,7 +10,5 @@ import com.mongodb.DBObject;
  *
  */
 public interface InfPanabitMsgMongoable {
-
 	DBObject toMongoDBObj();
-	
 }
