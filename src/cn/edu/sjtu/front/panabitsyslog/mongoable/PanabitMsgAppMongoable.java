@@ -69,7 +69,13 @@ public class PanabitMsgAppMongoable extends PanabitMsgApp implements InfPanabitM
 		DBObject dbObj = new BasicDBObject();
 		dbObj.put("app", this.getAppType());
 		dbObj.put("protocol", this.getConnType());
-		dbObj.put("starttime", (double)this.getStartTime());
+
+		/* Start Time to 10min */
+		// dbObj.put("starttime", (double)this.getStartTime());
+		int _starttime = (int)this.startTime;
+		_starttime = _starttime / 600 * 600;
+		dbObj.put("starttime", (double)_starttime);
+		
 		dbObj.put("endtime", (double)this.getEndTime());
 		dbObj.put("srcip", (double)this.getSrcIpv4());
 		dbObj.put("srcgroup", (double)this.getSrcGroup());

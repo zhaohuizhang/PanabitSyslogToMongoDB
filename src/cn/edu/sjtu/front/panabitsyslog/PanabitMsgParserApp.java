@@ -27,10 +27,7 @@ public class PanabitMsgParserApp implements InfPanabitParser {
 		panabitMsgApp.setAppType(msg.substring(6,msg.indexOf(".")));
 		panabitMsgApp.setConnType(msg.substring(msg.indexOf(".")+1, msg.indexOf(" ")));
 		String a=ssApp[1];
-		// Added By wei.jianwen@gmail.com
-		int _starttime = Integer.parseInt(a.substring(0,a.indexOf("-") ));
-		_starttime = _starttime / 600 * 600;
-		panabitMsgApp.setStartTime(_starttime);		
+		panabitMsgApp.setStartTime(Integer.parseInt(a.substring(0,a.indexOf("-"))));		
 		panabitMsgApp.setEndTime(Integer.parseInt(a.substring(a.indexOf("-")+1)));
 		String b=ssApp[2];
 		String srcip=b.substring(0,b.indexOf(":"));
