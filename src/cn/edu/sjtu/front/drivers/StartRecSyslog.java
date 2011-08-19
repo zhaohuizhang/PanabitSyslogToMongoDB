@@ -31,18 +31,19 @@ public class StartRecSyslog {
         String mongoIp = args[0];
         // Read MongoDB Connecting Port From Command Line
         int mongoPort = Integer.parseInt(args[1]);
+        // Read MongoDB Database Name From Command Line
+        String dbName = args[2];
+        // Read MongoDB collection Name From Command Line
+        String collectionName = args[3];
         
-        /* Prepare MongoDB Connection */
-        PanabitMsg msgPanabit = null;
-        // MongoDB Database Name
-        String dbDatabaseName = "dbpanabit";
+        // TODO: DELETE
         // MongoDB Connection Name: panabit_today
-		SimpleDateFormat today = new SimpleDateFormat("yyyyMMdd");
-		String dbCollectName = "panabit_" + today.format(new Date());
+		// SimpleDateFormat today = new SimpleDateFormat("yyyyMMdd");
+		// String dbCollectName = "panabit_" + today.format(new Date());
 		// MongoDB Connection, DB, Collections
 		Mongo mongo = new Mongo(mongoIp, mongoPort);
-		DB dbPanabit = mongo.getDB(dbDatabaseName);
-		DBCollection mongoConn = dbPanabit.getCollection(dbCollectName);
+		DB dbPanabit = mongo.getDB(dbName);
+		DBCollection mongoConn = dbPanabit.getCollection(collectionName);
 		
 		// Prepare the Panabit Message Processor
 		PanabitProcessor panabitProcessor = new PanabitProcessor();
@@ -58,7 +59,7 @@ public class StartRecSyslog {
 				String strPanabitMsg = new String(receivePacket.getData(), 0, receivePacket.getLength());
 
 				// 'Process the Panabit Message String'
-				msgPanabit = panabitProcessor.parseMsg(strPanabitMsg);
+				PanabitMsg msgPanabit = panabitProcessor.parseMsg(strPanabitMsg);
 
 				InfPanabitMsgMongoable msgMongoable = null;
 				DBObject dbObj = null;
