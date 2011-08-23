@@ -35,7 +35,10 @@ public class StartRecSyslog {
         String dbName = args[2];
         // Read MongoDB collection Name From Command Line
         String collectionName = args[3];
-        
+        // User name
+        String username = args[4];
+        // User pwd
+        String password = args[5];
         // TODO: DELETE
         // MongoDB Connection Name: panabit_today
 		// SimpleDateFormat today = new SimpleDateFormat("yyyyMMdd");
@@ -43,6 +46,15 @@ public class StartRecSyslog {
 		// MongoDB Connection, DB, Collections
 		Mongo mongo = new Mongo(mongoIp, mongoPort);
 		DB dbPanabit = mongo.getDB(dbName);
+		boolean loginSuccess=dbPanabit.authenticate(username, password.toCharArray());  
+        if(!loginSuccess){  
+            try {
+				System.out.println("登录"+dbName+"验证失败,请确认用户名和密码");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+        }  
 		DBCollection mongoConn = dbPanabit.getCollection(collectionName);
 		
 		// Prepare the Panabit Message Processor
